@@ -166,7 +166,7 @@ p=p->next;
 q=p->next;
 p->next=q->next;
 red();
-printf("Deleted element is %d ",q->data);
+//printf("Deleted element is %d ",q->data);
 free(q);
 white();
 }
