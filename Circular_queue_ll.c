@@ -41,12 +41,15 @@ void cq_dequeue()
 	if (i == 0)
 	{
 		p = front;
+    if (rear == front)
+			rear = front = NULL;
+    else
+     {
 		front = front->next;
 		rear->next = front;
+    }
 		printf("Deleted node is %d ", p->data);
-		if (rear == front)
-			rear = front = NULL;
-		free(p);
+			free(p);
 	}
 	else
 		printf("Cq is empty");
