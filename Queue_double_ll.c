@@ -11,7 +11,7 @@ queue *rear,*front;
 //front=NULL;
 int queue_empty()
 {
-if(rear==NULL)
+if(rear==NULL&&front==NULL)
 {
 return 1;
 }
@@ -48,13 +48,24 @@ int i;
 i=queue_empty();
 if(i==0)
 {
+if(front!=rear)
+{
 p=front;
 front=front->next;
 front->prev=NULL;
+printf("Deleted data is %d",p->data);
 free(p);
-if(front==NULL)
-printf("Queue Empty ");
 }
+else
+{
+	p=rear;
+	printf("Deleted data is %d",p->data);
+	front=rear=NULL;
+	free(p);
+}
+}
+else
+printf("Queue Empty ");
 }
 void display()
 {
@@ -93,7 +104,7 @@ rear->prev=p;
 }
 while(1)
 {
-printf("Enter your choice \n1.Enqueue\n2.Dequeue\n3.Display\n4.Exit\n");
+printf("\nEnter your choice \n1.Enqueue\n2.Dequeue\n3.Display\n4.Exit\n");
 scanf("%d",&ch);
 switch(ch)
 {
